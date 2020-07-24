@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://MovingKinematicBody2D.gdns" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://StaticArea2D.gdns" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 83, 81 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.0688, 31.6874 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticArea2D" type="Area2D" parent="."]
+position = Vector2( 496, 270 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticArea2D"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="StaticArea2D/CollisionShape2D"]
+position = Vector2( -1.99999, -4.05312e-06 )
+scale = Vector2( 2.65625, 2.59375 )
+texture = ExtResource( 2 )
+
+[node name="MovingKinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 282, 269 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingKinematicBody2D"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="MovingKinematicBody2D/CollisionShape2D"]
+texture = ExtResource( 2 )
+[connection signal="body_entered" from="StaticArea2D" to="StaticArea2D" method="_on_body_entered"]

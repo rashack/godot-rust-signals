@@ -1,0 +1,10 @@
+[gd_resource type="NativeScript" load_steps=2 format=2]
+
+[sub_resource type="GDNativeLibrary" id=1]
+entry/X11.64 = "res://target/debug/libsignals.so"
+dependency/X11.64 = [  ]
+
+[resource]
+resource_name = "MovingKinematicBody2D"
+class_name = "MovingKinematicBody2D"
+library = SubResource( 1 )
