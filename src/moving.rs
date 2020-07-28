@@ -21,7 +21,7 @@ impl MovingKinematicBody2D {
 
     #[export]
     fn _ready(&self, owner: TRef<KinematicBody2D>) {
-        let static_area = unsafe { owner.get_typed_node::<Area2D, _>("MovingKinematicBody2D") };
+        let static_area = unsafe { owner.get_typed_node::<Area2D, _>("../StaticArea2D") };
         static_area.connect(crate::extensions::SIGNAL_NAME, owner, "area_entered", VariantArray::new_shared(), 0).unwrap();
     }
 
@@ -53,4 +53,3 @@ impl MovingKinematicBody2D {
         godot_dbg!("area_entered");
     }
 }
-
